@@ -1,26 +1,28 @@
 import React, {Component} from 'react'
-// import * as firebase from "firebase/app"
+import UserList from '../components/UserList'
 
 class Main extends Component {
 
     constructor(props) {
         super(props)
-        // if (firebase.apps.length === 0) {
-        //     firebase.initializeApp({});
-        // }
-        // firebase.initializeApp(FirebaseConfig)
         this.state = {
-            data: {}
+            data: null
         }
     }
 
+    componentDidUpdate() {
+
+    }
+
     componentDidMount() {
-        fetch("http://localhost:8080/")
-        .then(data => data.json())
-        .then(res => this.setState(prevState => {
+        const URL = "http://localhost:8080/"
+
+        fetch(URL)
+        .then(res => res.json())
+        .then(data => this.setState(prevState => {
             return {
                 ...prevState,
-                data: res
+                data: data
             }
         }, () => {
             console.log(this.state.data)
@@ -29,7 +31,7 @@ class Main extends Component {
 
     render() {
         return (
-            <h1>Hello from main</h1>
+            <UserList accountsData={this.state.data} />
         )
     }
 
