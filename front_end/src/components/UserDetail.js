@@ -2,35 +2,22 @@ import React from 'react'
 
 const UserDetail = ({accountsData, selectedAccountId}) => {
 
-    let account;
-    let title;
-    // if (accountsData !== null) {
-    //     for (const accountId in accountsData.accounts) {
-    //         if (accountId === selectedAccountId) {
-    //             for (const value in accountsData.accounts[accountId]) {
-    //                 account = Object.values(accountsData.accounts[accountId][value])
-    //                 for (const app of account) {
-    //                     title = app.title
-    //                     console.log(title)
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-    // for (const key of Object.keys(accountsData.accounts))
+    let filmTitle;
     if (accountsData !== null) {
-        account = Object.keys(accountsData.accounts).some( accountId => {
+        Object.keys(accountsData.accounts).some( accountId => {
             if (accountId === selectedAccountId) {
-                console.log(accountsData.accounts[accountId])
+                const filmDetails = Object.values(accountsData.accounts[accountId].apps)
+                for (const film of filmDetails) {
+                    filmTitle = film.title
+                    console.log(filmTitle)
+                }             
             }
         })
-        console.log(account)
     }
-    
 
     return (
         <>
-            {/* {title} */}
+            {filmTitle}
         </>
     )
 
