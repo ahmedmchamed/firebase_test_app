@@ -8,10 +8,10 @@ class Main extends Component {
         super(props)
         this.state = {
             data: null,
-            selectedAccount: null
+            selectedAccountId: null
         }
 
-        this.handleSelectedUser = this.handleSelectedUser.bind(this)
+        this.handleSelectedAccId = this.handleSelectedAccId.bind(this)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -44,26 +44,27 @@ class Main extends Component {
         }))
     }
 
-    handleSelectedUser(value) {
+    handleSelectedAccId(value) {
         this.setState( prevState => {
             return {
                 ...prevState,
-                selectedAccount: value
+                selectedAccountId: value
             }
         }, () => {
-            console.log(this.state.selectedAccount)
+            console.log(this.state.selectedAccountId)
         })
     }
 
     render() {
         return (
             <>
+                <h1>Select a user from below to view their details</h1>
                 <UserList 
                     accountsData={this.state.data} 
-                    handleSelectedUser={this.handleSelectedUser} />
+                    handleSelectedAccId={this.handleSelectedAccId} />
                 <UserDetail 
                     accountsData={this.state.data} 
-                    selectedAccount={this.state.selectedAccount} />
+                    selectedAccountId={this.state.selectedAccountId} />
             </>
         )
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import UserDetail from './UserDetail'
 
-const UserList = ({accountsData, handleSelectedUser}) => {
+const UserList = ({accountsData, handleSelectedAccId}) => {
 
     let userIds = []
     let userDetails = []
@@ -16,7 +16,7 @@ const UserList = ({accountsData, handleSelectedUser}) => {
     }
 
     function changeEvent(event) {
-        handleSelectedUser(event.target.value)
+        handleSelectedAccId(event.target.value)
     }
 
     return (
