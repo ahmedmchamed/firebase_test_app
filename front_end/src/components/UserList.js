@@ -1,7 +1,7 @@
 import React from 'react'
 import UserDetail from './UserDetail'
 
-const UserList = ({accountsData}) => {
+const UserList = ({accountsData, handleSelectedUser}) => {
 
     let userIds = []
     let userDetails = []
@@ -10,23 +10,19 @@ const UserList = ({accountsData}) => {
 
         userIds = Object.keys(accountsData.users)
         userDetails = Object.values(accountsData.users).map((user, index) => {
-            return <UserDetail 
-                        key={index} 
-                        userName={user.name} 
-                        userAccount={user.account}
-                        accountsData={accountsData} 
-                    />
+            return <option key={index} value={user.account}>{user.name}</option>
         })
 
     }
 
-    changeEvent = () => {
-        
+    function changeEvent(event) {
+        handleSelectedUser(event.target.value)
     }
 
     return (
         <>
-            <select onChange={changeEvent}>
+            <select id="user-dropdown" defaultValue="default" onChange={changeEvent}>
+                <option disabled value="default">Choose a user...</option>
                 {userDetails}
             </select>
         </>

@@ -1,17 +1,32 @@
 import React, {Component} from 'react'
 import UserList from '../components/UserList'
+import UserDetail from '../components/UserDetail'
 
 class Main extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            data: null
+            data: null,
+            selectedAccount: null
         }
+
+        this.handleSelectedUser = this.handleSelectedUser.bind(this)
     }
 
-    componentDidUpdate() {
-
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.data !== this.state.data) {
+            fetch(URL)
+            .then(res => res.json())
+            .then(data => this.setState(prevState => {
+                return {
+                    ...prevState,
+                    data: data
+                }
+            }, () => {
+                console.log(this.state.data) 
+            }))
+        }
     }
 
     componentDidMount() {
@@ -29,9 +44,27 @@ class Main extends Component {
         }))
     }
 
+    handleSelectedUser(value) {
+        this.setState( prevState => {
+            return {
+                ...prevState,
+                selectedAccount: value
+            }
+        }, () => {
+            console.log(this.state.selectedAccount)
+        })
+    }
+
     render() {
         return (
-            <UserList accountsData={this.state.data} />
+            <>
+                <UserList 
+                    accountsData={this.state.data} 
+                    handleSelectedUser={this.handleSelectedUser} />
+                <UserDetail 
+                    accountsData={this.state.data} 
+                    selectedAccount={this.state.selectedAccount} />
+            </>
         )
     }
 
