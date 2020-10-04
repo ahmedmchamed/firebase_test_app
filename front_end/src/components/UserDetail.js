@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const UserDetail = ({accountsData, selectedAccountId}) => {
 
     let filmTitle;
@@ -15,9 +16,31 @@ const UserDetail = ({accountsData, selectedAccountId}) => {
         })
     }
 
+    function handleClick(event) {
+        let key
+        const keyToFind = Object.keys(accountsData.accounts[selectedAccountId].apps)
+        for (const foundKey of keyToFind) {
+            key = foundKey
+        }
+        accountsData.accounts[selectedAccountId].apps[key]["rating"] = event.target.value
+        console.log(accountsData)
+    
+        console.log(accountsData)
+        fetch("http://localhost:8080/update", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                newData: accountsData
+            })
+        })
+    }
+
     return (
         <>
             {filmTitle}
+            <button value="5" onClick={handleClick}>AHOY THERE</button>
         </>
     )
 

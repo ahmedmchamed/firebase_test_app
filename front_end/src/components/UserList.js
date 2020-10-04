@@ -1,14 +1,10 @@
 import React from 'react'
-import UserDetail from './UserDetail'
 
 const UserList = ({accountsData, handleSelectedAccId}) => {
 
-    let userIds = []
     let userDetails = []
-
     if (accountsData !== null) {
 
-        userIds = Object.keys(accountsData.users)
         userDetails = Object.values(accountsData.users).map((user, index) => {
             return <option key={index} value={user.account}>{user.name}</option>
         })
