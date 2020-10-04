@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const UserDetail = ({accountsData, selectedAccountId}) => {
 
     let filmTitle;
@@ -23,9 +22,7 @@ const UserDetail = ({accountsData, selectedAccountId}) => {
             key = foundKey
         }
         accountsData.accounts[selectedAccountId].apps[key]["rating"] = event.target.value
-        console.log(accountsData)
-    
-        console.log(accountsData)
+        
         fetch("http://localhost:8080/update", {
             method: "POST",
             headers: {
