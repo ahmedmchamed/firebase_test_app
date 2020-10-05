@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import UserList from '../components/UserList'
 import UserDetail from '../components/UserDetail'
+import "./main.css"
 
 class Main extends Component {
 
@@ -16,6 +17,7 @@ class Main extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        console.log("COMPONENTDIDUPDATE TRIGGER")
         if (prevState.data !== this.state.data) {
             fetch(URL)
             .then(res => res.json())
@@ -78,7 +80,7 @@ class Main extends Component {
     render() {
         return (
             <>
-                <h1>Select a user from below to view their details</h1>
+                <h1 className="main-header">Select a user from below to view their details</h1>
                 <UserList 
                     accountsData={this.state.data} 
                     handleSelectedAccId={this.handleSelectedAccId} />

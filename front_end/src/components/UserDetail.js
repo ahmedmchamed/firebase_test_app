@@ -1,4 +1,5 @@
 import React from 'react'
+import "./userdetail.css"
 
 const UserDetail = ({accountsData, selectedAccountId, handleRatingUpdate}) => {
 
@@ -28,29 +29,24 @@ const UserDetail = ({accountsData, selectedAccountId, handleRatingUpdate}) => {
     let ratingDescription
     let ratingSelection
     if (filmTitle) {
-        ratingDescription = <p>Rate the film here:</p>;
-        ratingSelection =   <select id="rating-dropdown" defaultValue="default" onChange={handleRating}>
+        ratingDescription = <p className="film-rate-query">You can rate <b>{filmTitle}</b> here:</p>;
+        ratingSelection =   <select className="rating-dropdown" defaultValue="default" onChange={handleRating}>
                                 <option disabled value="default">Choose a rating</option>
-                                <option value="5">5 - Best thing ever 🙌</option>
-                                <option value="4">4 - Pretty good 👍</option>
-                                <option value="3">3 - Not bad 😬</option>
-                                <option value="2">2 - Hmm 🤔</option>
-                                <option value="1">1 - Nope 🤢</option>
+                                <option value="5">5 - Best thing ever 🙌 </option>
+                                <option value="4">4 - Pretty good 👍 </option>
+                                <option value="3">3 - Not bad 😬 </option>
+                                <option value="2">2 - Hmm 🤔 </option>
+                                <option value="1">1 - Nope 🤢 </option>
                             </select>
-    }
-
-    const userRating = () => {
-        if ('rating' in accountsData.accounts[selectedAccountId].apps) {
-            console.log("Hello")
-        }
     }
 
     return (
         <>
-            <p>{filmTitle}</p>
-            {ratingDescription}
-            {ratingSelection}
-            {userRating}
+            <div className="results-wrapper">
+                <p className="film-title">{filmTitle}</p>
+                {ratingDescription}
+                {ratingSelection}
+            </div>
         </>
     )
 

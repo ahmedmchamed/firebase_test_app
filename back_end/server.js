@@ -37,7 +37,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/update', (req, res) => {
-    console.log("HELLO HERE I AM")
     // const newData = req.body
     // console.log(newData)
     firebase.database().ref('/').set(req.body.newData)

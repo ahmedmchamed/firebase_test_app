@@ -1,0 +1,9 @@
+.main-header {
+    font-family: Georgia, sans-serif;
+    font-size: 2em;
+    letter-spacing: -2px;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+  }
