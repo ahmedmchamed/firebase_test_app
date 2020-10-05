@@ -12,6 +12,7 @@ class Main extends Component {
         }
 
         this.handleSelectedAccId = this.handleSelectedAccId.bind(this)
+        this.handleRatingUpdate = this.handleRatingUpdate.bind(this)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -30,9 +31,7 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        const URL = "http://localhost:8080/"
-
-        fetch(URL)
+        fetch("http://localhost:8080/")
         .then(res => res.json())
         .then(data => this.setState(prevState => {
             return {
@@ -44,14 +43,35 @@ class Main extends Component {
         }))
     }
 
-    handleSelectedAccId(value) {
+    handleSelectedAccId(newAccountId) {
         this.setState( prevState => {
             return {
                 ...prevState,
-                selectedAccountId: value
+                selectedAccountId: newAccountId
             }
         }, () => {
             console.log(this.state.selectedAccountId)
+        })
+    }
+
+    handleRatingUpdate(updatedDataState) {
+        fetch("http://localhost:8080/update", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                newData: this.state.data
+            })
+        })
+
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                data: updatedDataState
+            }
+        }, () => {
+            console.log(this.state.data)
         })
     }
 
@@ -63,8 +83,9 @@ class Main extends Component {
                     accountsData={this.state.data} 
                     handleSelectedAccId={this.handleSelectedAccId} />
                 <UserDetail 
-                    accountsData={this.state.data} 
-                    selectedAccountId={this.state.selectedAccountId} />
+                    accountsData={this.state.data}
+                    selectedAccountId={this.state.selectedAccountId}
+                    handleRatingUpdate={this.handleRatingUpdate} />
             </>
         )
     }

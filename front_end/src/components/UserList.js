@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const UserList = ({accountsData, handleSelectedAccId}) => {
 
@@ -17,7 +17,7 @@ const UserList = ({accountsData, handleSelectedAccId}) => {
 
     return (
         <>
-            <select id="user-dropdown" defaultValue="default" onChange={changeEvent}>
+            <select className="user-dropdown" defaultValue="default" onChange={changeEvent}>
                 <option disabled value="default">Choose a user...</option>
                 {userDetails}
             </select>
