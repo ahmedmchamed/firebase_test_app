@@ -9,4 +9,12 @@ A simple app to test writing data to a Firebase database, and fetching the updat
 
 ---
 
-![screenshot](/front_end/public/firebase_screenshot.png?raw=true "screenshot")
+![initial_screenshot](/front_end/public/firebase_screenshot.png?raw=true "initial-screenshot")
+
+---
+
+![users_screenshot](/front_end/public/firebase_users_select.png?raw=true "users-select-screenshot")
+
+---
+
+![ratings_screenshot](/front_end/public/firebase_ratings_select.png?raw=true "ratings-select-screenshot")
