@@ -17,7 +17,6 @@ class Main extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("COMPONENTDIDUPDATE TRIGGER")
         if (prevState.data !== this.state.data) {
             fetch(URL)
             .then(res => res.json())

@@ -9,8 +9,8 @@ const firebase = require('firebase/app')
 require("firebase/auth")
 require('firebase/database')
 
-//Firebase config settings
-//Using env file to hide sensitive data
+// Firebase config settings
+// Using env file to hide sensitive data
 const firebaseConfig = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
@@ -22,7 +22,7 @@ const firebaseConfig = {
     measurementId: process.env.MEASUREMENT_ID
 }
 
-//Initialising the firebase instance
+// Initialising the firebase instance
 firebase.initializeApp(firebaseConfig)
 
 app.use(cors())
